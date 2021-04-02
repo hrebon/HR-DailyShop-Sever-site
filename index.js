@@ -11,11 +11,9 @@ const port = process.env.PORT || 5000
 app.use(cors());
 app.use(bodyParser.json());
 
-console.log(process.env.DB_USER)
 
-app.get('/', (req, res) => {
-  res.send('HR World!')
-})
+
+
 
 
 
@@ -68,7 +66,6 @@ client.connect(err => {
 
   app.post('/addEvent', (req, res) => {
       const newEvent = req.body;
-      console.log('connection new event',newEvent);
       collection.insertOne(newEvent)
       .then(result => {
           console.log("inserted image url", result.insertedCount)
